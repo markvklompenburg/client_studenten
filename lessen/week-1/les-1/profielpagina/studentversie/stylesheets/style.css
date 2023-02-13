@@ -6,6 +6,10 @@
     font-family: Arial;
 }
 
+.personalia__content{
+    display: flex;
+}
+
 .personalia {
     background-color: #e7e8ec;
     width: 100%;
@@ -13,6 +17,54 @@
     flex-direction: column;
     align-items: center;
 }
+
+.personalia__category-title{
+    color: rgba(39, 140, 39, 0.96);
+}
+
+.personalia__item{
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.personalia__icon{
+    width: 20px;
+    padding-right: 10px;
+}
+
+.personalia__list{
+    list-style-type: none;
+    padding: 0;
+}
+
+.personalia__vaardigheden-list{
+    list-style-type: none;
+    margin: 0px;
+    margin-top: 10px;
+    margin-bottom: 13px;
+}
+
+.personalia__vaardigheden-item{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: grey;
+    border-radius: 100%;
+    margin-top: 11px;
+    margin-bottom: -6px;
+}
+
+.personalia__vaardigheden-item-selected{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    background-color: green;
+    border-radius: 100%;
+    margin-top: 11px;
+    margin-bottom: -6px;
+}
+
+
 
 .profile {
     background-color: #faf8f8;

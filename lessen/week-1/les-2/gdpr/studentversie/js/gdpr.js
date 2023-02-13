@@ -5,7 +5,7 @@ class GDPR {
         this.showContent();
         this.bindEvents();
 
-        if(this.cookieStatus() !== 'accept') this.showGDPR();
+        if(this.cookieStatus() !== 'accept' && this.cookieStatus() !== 'reject') this.showGDPR();
     }
 
     bindEvents() {
@@ -17,27 +17,26 @@ class GDPR {
             this.hideGDPR();
         });
 
-
-//student uitwerking
-
-
+        let buttonReject = document.querySelector('.gdpr-consent__button--reject');
+        buttonReject.addEventListener('click', () => {
+            this.cookieStatus('reject');
+            this.showStatus();
+            this.showContent();
+            this.hideGDPR();
+        });
     }
-
 
     showContent() {
         this.resetContent();
         const status = this.cookieStatus() == null ? 'not-chosen' : this.cookieStatus();
         const element = document.querySelector(`.content-gdpr-${status}`);
         element.classList.add('show');
-
     }
 
     resetContent(){
         const classes = [
             '.content-gdpr-accept',
-
-//student uitwerking
-
+            '.content-gdpr-reject',
             '.content-gdpr-not-chosen'];
 
         for(const c of classes){
@@ -52,16 +51,26 @@ class GDPR {
     }
 
     cookieStatus(status) {
-        if (status) localStorage.setItem('gdpr-consent-choice', status);
+        if (status) {
 
-//student uitwerking
+            localStorage.setItem('gdpr-consent-choice', status);
+
+            // Create an object
+            var currentTime = new Date();
+
+            const userData = {
+                Datum: currentTime.getDay() + "-" + currentTime.getMonth() + "-" + currentTime.getFullYear(),
+                Tijd: currentTime.getHours() + ":" + currentTime.getMinutes(),
+            };
+
+            let temp = JSON.stringify(userData);
+            //temp = JSON.parse(temp);
+
+            localStorage.setItem("gdpr-consent-data", temp);
+        }
 
         return localStorage.getItem('gdpr-consent-choice');
     }
-
-
-//student uitwerking
-
 
     hideGDPR(){
         document.querySelector(`.gdpr-consent`).classList.add('hide');
